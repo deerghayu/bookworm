@@ -25,7 +25,7 @@ public class BookDaoImpl implements BookDao {
         session.flush();
     }
 
-    public Book getBookById(String id) {
+    public Book getBookById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Book book = (Book) session.get(Book.class, id);
         session.flush();
@@ -42,7 +42,7 @@ public class BookDaoImpl implements BookDao {
         return products;
     }
 
-    public void deleteBook (String id) {
+    public void deleteBook (int id) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(getBookById(id));
         session.flush();

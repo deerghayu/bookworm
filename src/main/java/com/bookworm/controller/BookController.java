@@ -35,7 +35,7 @@ public class BookController {
 	}
 
 	@RequestMapping("/bookList/bookDetails/{bookId}")
-	public String viewBook(@PathVariable String bookId, Model model) throws IOException {
+	public String viewBook(@PathVariable int bookId, Model model) throws IOException {
 
 		Book book = bookDao.getBookById(bookId);
 		model.addAttribute(book);
@@ -76,7 +76,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/admin/bookInventory/deleteBook/{bookId}")
-	public String deleteBook(@PathVariable String bookId, Model model) {
+	public String deleteBook(@PathVariable int bookId, Model model) {
 		bookDao.deleteBook(bookId);
 		return "redirect:/admin/bookInventory";
 	}
