@@ -19,9 +19,9 @@ public class BookDaoImpl implements BookDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void addBook(Book product) {
+    public void addBook(Book book) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(product);
+        session.saveOrUpdate(book);
         session.flush();
     }
 

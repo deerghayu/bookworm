@@ -4,16 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String bookId;
+	private int bookId;
 	private String bookName;
 	private String bookCategory;
 	private String bookAuthor;
@@ -23,14 +20,11 @@ public class Book {
 	private int unitInStock;
 	private String bookPlublisher;
 
-	@Transient
-	private MultipartFile bookImage;
-
-	public String getBookId() {
+	public int getBookId() {
 		return bookId;
 	}
 
-	public void setBookId(String bookId) {
+	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 
@@ -96,14 +90,6 @@ public class Book {
 
 	public void setBookPlublisher(String bookPlublisher) {
 		this.bookPlublisher = bookPlublisher;
-	}
-
-	public MultipartFile getBookImage() {
-		return bookImage;
-	}
-
-	public void setBookImage(MultipartFile bookImage) {
-		this.bookImage = bookImage;
 	}
 
 }

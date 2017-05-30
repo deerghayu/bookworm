@@ -22,8 +22,7 @@
 <link href="<c:url value='/resources/css/carousel.css' />"
 	rel="stylesheet">
 </head>
-<!-- NAVBAR
-================================================== -->
+<!-- NAVBAR =============================================== -->
 <body>
 	<div class="navbar-wrapper">
 		<div class="container">
@@ -66,8 +65,7 @@
 	</div>
 
 
-	<!-- Carousel
-    ================================================== -->
+	<!-- Carousel ============================================== -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">

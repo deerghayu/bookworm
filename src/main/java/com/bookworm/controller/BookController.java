@@ -1,9 +1,6 @@
 package com.bookworm.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.bookworm.dao.BookDao;
 import com.bookworm.model.Book;
 
 @Controller
 public class BookController {
-
-	private Path path;
 
 	@Autowired
 	private BookDao bookDao;
@@ -78,17 +72,6 @@ public class BookController {
 	@RequestMapping(value = "/admin/bookInventory/addBook", method = RequestMethod.POST)
 	public String addBook(@ModelAttribute("book") Book book, HttpServletRequest request) {
 		bookDao.addBook(book);
-		MultipartFile bookImage = book.getBookImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + book.getBookId() + ".jpg");
-		if (bookImage != null && bookImage.isEmpty())
-			try {
-				bookImage.transferTo(new File(path.toString()));
-			} catch (Exception ex) {
-				ex.printStackTrace();
-				throw new RuntimeException("Book image saving failed", ex);
-
-			}
 		return "redirect:/admin/bookInventory";
 	}
 
