@@ -2,6 +2,7 @@ package com.bookworm.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -75,6 +76,13 @@ public class BookController {
 		return "addBook";
 	}
 
+	/*
+	 * when you run tomcat inside eclipse. eclipse copy your project and execute
+	 * it at
+	 * "C:\Users\USER_NAME\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\PROJECT_NAME\WEB-INF\resources\images\IMAGE_NAME.png"
+	 * It's correct path. So, You can't see Images inside resource/images of
+	 * project Directory. Don't Panic!
+	 */
 	@RequestMapping(value = "/admin/bookInventory/addBook", method = RequestMethod.POST)
 	public String addBook(@ModelAttribute("book") Book book, HttpServletRequest request) {
 		bookDao.addBook(book);
@@ -96,8 +104,19 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/admin/bookInventory/deleteBook/{bookId}")
-	public String deleteBook(@PathVariable int bookId, Model model) {
+	public String deleteBook(@PathVariable int bookId, Model model, HttpServletRequest request) {
+
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + bookId + ".png");
+		if (Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		bookDao.deleteBook(bookId);
+
 		return "redirect:/admin/bookInventory";
 	}
 

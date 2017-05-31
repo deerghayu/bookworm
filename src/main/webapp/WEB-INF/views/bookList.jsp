@@ -22,7 +22,7 @@
 			<tbody>
 				<c:forEach items="${books}" var="book">
 					<tr>
-						<td><img src="#" alt="image" /></td>
+						<td><img src="<c:url value='/resources/images/${book.bookId}.png'/>" alt="image" style="width:100%"/></td>
 						<td>${book.bookName}</td>
 						<td>${book.bookCategory}</td>
 						<td>${book.bookAuthor}</td>
