@@ -8,7 +8,8 @@
 			<h1>Add Book</h1>
 			<p class="lead">Fill the information to add a book!</p>
 		</div>
-		<form:form action="${pageContext.request.contextPath}/admin/bookInventory/addBook" method="post" commandName="book">
+		<form:form action="${pageContext.request.contextPath}/admin/bookInventory/addBook" method="post" commandName="book"
+		enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="bookName">Book Name</label>
 				<form:input path="bookName" id="name" class="form-control" />
@@ -54,6 +55,11 @@
 						path="bookCondition" id="bookCondition" value="New" />New</label> <label
 					class="checkbox-inline"><form:radiobutton
 						path="bookCondition" id="bookCondition" value="Used" />Use</label>
+			</div>
+			<div class="form-group">
+			<label for="bookImage" class="control-label">Upload Picture</label>
+			<form:input path ="bookImage" id="bookImage" class="form:input-large" type="file"/>
+			
 			</div>
 			<input type="submit" value="submit" class="btn btn-primary">
 			<a href="<c:url value='/admin/bookInventory'/>"

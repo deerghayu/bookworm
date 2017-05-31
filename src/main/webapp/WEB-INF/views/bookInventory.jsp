@@ -28,11 +28,9 @@
 						<td>${book.bookAuthor}</td>
 						<td>${book.bookPrice}</td>
 						<td>${book.bookPlublisher}</td>
-						<td><a
-							href="<spring:url value='/bookList/bookDetails/${book.bookId}'/>">
+						<td><a href="<spring:url value='/bookList/bookDetails/${book.bookId}'/>">
 								<span class="glyphicon glyphicon-info-sign"></span>
-						</a> <a
-							href="<spring:url value='/admin/bookInventory/deleteBook/${book.bookId}'/>">
+						</a> <a href="<spring:url value='/admin/bookInventory/deleteBook/${book.bookId}'/>">
 								<span class="glyphicon glyphicon-trash"></span>
 						</a></td>
 					</tr>
