@@ -68,7 +68,7 @@ public class BookController {
 		Book book = new Book();
 		book.setBookAuthor("Subin Kumar");
 		book.setBookCategory("Novel");
-		book.setBookPlublisher("kantipur");
+		book.setBookPublisher("kantipur");
 		book.setBookPrice(400);
 		book.setUnitInStock(200);
 		book.setBookStatus("In Stock");
@@ -116,6 +116,33 @@ public class BookController {
 			}
 		}
 		bookDao.deleteBook(bookId);
+
+		return "redirect:/admin/bookInventory";
+	}
+
+	@RequestMapping(value = "/admin/bookInventory/editBook/{bookId}")
+	public String editBook(@PathVariable int bookId, Model model) {
+
+		Book book = bookDao.getBookById(bookId);
+		model.addAttribute(book);
+
+		return "editBook";
+	}
+
+	@RequestMapping(value = "/admin/bookInventory/editBook", method = RequestMethod.POST)
+	public String editBookPost(@ModelAttribute("book") Book book, Model model, HttpServletRequest request) {
+
+		MultipartFile bookImage = book.getBookImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + book.getBookId() + ".png");
+		if (bookImage != null && !bookImage.isEmpty()) {
+			try {
+				bookImage.transferTo(new File(path.toString()));
+			} catch (Exception e) {
+				throw new RuntimeException("Book Image Saving Failed", e);
+			}
+		}
+		bookDao.editBook(book);
 
 		return "redirect:/admin/bookInventory";
 	}

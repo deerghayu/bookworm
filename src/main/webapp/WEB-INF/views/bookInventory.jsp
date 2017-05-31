@@ -22,15 +22,22 @@
 			<tbody>
 				<c:forEach items="${books}" var="book">
 					<tr>
-						<td><img src="<c:url value='/resources/images/${book.bookId}.png'/>" alt="image" style="width:100%"/></td>
+						<td><img
+							src="<c:url value='/resources/images/${book.bookId}.png'/>"
+							alt="image" style="width: 100%" /></td>
 						<td>${book.bookName}</td>
 						<td>${book.bookCategory}</td>
 						<td>${book.bookAuthor}</td>
 						<td>${book.bookPrice}</td>
-						<td>${book.bookPlublisher}</td>
-						<td><a href="<spring:url value='/bookList/bookDetails/${book.bookId}'/>">
+						<td>${book.bookPublisher}</td>
+						<td><a
+							href="<spring:url value='/bookList/bookDetails/${book.bookId}'/>">
 								<span class="glyphicon glyphicon-info-sign"></span>
-						</a><a href="<spring:url value='/admin/bookInventory/deleteBook/${book.bookId}'/>">
+						</a><a
+							href="<spring:url value='/admin/bookInventory/editBook/${book.bookId}'/>">
+								<span class="glyphicon glyphicon-pencil"></span>
+						</a> <a
+							href="<spring:url value='/admin/bookInventory/deleteBook/${book.bookId}'/>">
 								<span class="glyphicon glyphicon-trash"></span>
 						</a></td>
 					</tr>

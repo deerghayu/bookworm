@@ -21,7 +21,7 @@ public class Book {
 	private String bookCondition;
 	private String bookStatus;
 	private int unitInStock;
-	private String bookPlublisher;
+	private String bookPublisher;
 	
 	@Transient
 	private MultipartFile bookImage;
@@ -90,12 +90,14 @@ public class Book {
 		this.unitInStock = unitInStock;
 	}
 
-	public String getBookPlublisher() {
-		return bookPlublisher;
+	
+
+	public String getBookPublisher() {
+		return bookPublisher;
 	}
 
-	public void setBookPlublisher(String bookPlublisher) {
-		this.bookPlublisher = bookPlublisher;
+	public void setBookPublisher(String bookPublisher) {
+		this.bookPublisher = bookPublisher;
 	}
 
 	public MultipartFile getBookImage() {

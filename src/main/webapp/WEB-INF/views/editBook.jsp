@@ -5,32 +5,31 @@
 <div class="container-wrapper">
 	<div class="container">
 		<div class="page-header">
-			<h1>Add Book</h1>
-			<p class="lead">Fill the information to add a book!</p>
+			<h1>Edit Book Details</h1>
+			<p class="lead"> Please Edit the Book Information to update!</p>
 		</div>
-		<form:form action="${pageContext.request.contextPath}/admin/bookInventory/addBook" method="post" commandName="book"
+		<form:form action="${pageContext.request.contextPath}/admin/bookInventory/editBook" method="post" commandName="book"
 		enctype="multipart/form-data">
+		<form:hidden path="bookId" value="${book.bookId}" />
 			<div class="form-group">
 				<label for="bookName">Book Name</label>
-				<form:input path="bookName" id="name" class="form-control" />
+				<form:input path="bookName" value="${book.bookName}" id="name" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="bookAuthor">Author</label>
-				<form:textarea path="bookAuthor" id="bookAuthor"
-					class="form-control" />
+				<form:textarea path="bookAuthor" value="${book.bookAuthor}" id="bookAuthor" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="bookPrice">Price</label>
-				<form:input path="bookPrice" id="bookPrice" class="form-control" />
+				<form:input path="bookPrice" value="${book.bookPrice}" id="bookPrice" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="bookPublisher">Publisher</label>
-				<form:input path="bookPublisher" id="bookPublisher"
-					class="form-control" />
+				<form:input path="bookPublisher" value="${book.bookPublisher}" id="bookPublisher" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="unitInStock">Unit In Stock</label>
-				<form:input path="unitInStock" id="unitInStock" class="form-control" />
+				<form:input path="unitInStock" value="${book.unitInStock}" id="unitInStock" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="bookCategory">Category</label> <label

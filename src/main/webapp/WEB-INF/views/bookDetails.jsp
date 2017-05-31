@@ -22,7 +22,7 @@
 						<strong>Author</strong>: ${book.bookAuthor}
 					</p>
 					<p>
-						<strong>Publisher</strong>: ${book.bookPlublisher}
+						<strong>Publisher</strong>: ${book.bookPublisher}
 					</p>
 					<h4>${book.bookPrice} USD</h4>
 

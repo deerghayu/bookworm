@@ -27,7 +27,7 @@
 						<td>${book.bookCategory}</td>
 						<td>${book.bookAuthor}</td>
 						<td>${book.bookPrice}</td>
-						<td>${book.bookPlublisher}</td>
+						<td>${book.bookPublisher}</td>
 						<td><a
 							href="<spring:url value='/bookList/bookDetails/${book.bookId}'/>">
 								<span class="glyphicon glyphicon-info-sign"></span>

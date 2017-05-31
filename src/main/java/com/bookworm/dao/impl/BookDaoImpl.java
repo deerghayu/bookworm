@@ -24,6 +24,12 @@ public class BookDaoImpl implements BookDao {
         session.saveOrUpdate(book);
         session.flush();
     }
+    
+    public void editBook(Book book) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(book);
+        session.flush();
+    }
 
     public Book getBookById(int id) {
         Session session = sessionFactory.getCurrentSession();
