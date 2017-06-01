@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>Book Details</h1>
-			<p class="lead">Here is the details information about the book!</p>
+			<p class="lead">Here is the details about the book!</p>
 		</div>
 		<div class="container">
 			<div class="row">
