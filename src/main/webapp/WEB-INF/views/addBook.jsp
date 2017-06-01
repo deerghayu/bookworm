@@ -11,7 +11,7 @@
 		<form:form action="${pageContext.request.contextPath}/admin/bookInventory/addBook" method="post" commandName="book"
 		enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="bookName">Book Name</label>
+				<label for="bookName">Book Name </label><form:errors path="bookName" cssStyle="color:#ff0000;"/>
 				<form:input path="bookName" id="name" class="form-control" />
 			</div>
 			<div class="form-group">
@@ -20,7 +20,7 @@
 					class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="bookPrice">Price</label>
+				<label for="bookPrice">Price </label><form:errors path="bookPrice" cssStyle="color:#ff0000;"/>
 				<form:input path="bookPrice" id="bookPrice" class="form-control" />
 			</div>
 			<div class="form-group">
@@ -29,7 +29,7 @@
 					class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="unitInStock">Unit In Stock</label>
+				<label for="unitInStock">Unit In Stock </label><form:errors path="unitInStock" cssStyle="color:#ff0000;"/>
 				<form:input path="unitInStock" id="unitInStock" class="form-control" />
 			</div>
 			<div class="form-group">

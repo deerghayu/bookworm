@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -14,15 +16,21 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bookId;
+
+	@NotEmpty(message = "Book name must not be null")
 	private String bookName;
 	private String bookCategory;
 	private String bookAuthor;
+
+	@Min(value = 0, message = "Book price must not be less than zero")
 	private double bookPrice;
 	private String bookCondition;
 	private String bookStatus;
+
+	@Min(value = 0, message = "Unit value must not be less than zero")
 	private int unitInStock;
 	private String bookPublisher;
-	
+
 	@Transient
 	private MultipartFile bookImage;
 
@@ -89,8 +97,6 @@ public class Book {
 	public void setUnitInStock(int unitInStock) {
 		this.unitInStock = unitInStock;
 	}
-
-	
 
 	public String getBookPublisher() {
 		return bookPublisher;

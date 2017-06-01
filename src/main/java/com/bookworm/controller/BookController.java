@@ -8,10 +8,12 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,7 +86,11 @@ public class BookController {
 	 * project Directory. Don't Panic!
 	 */
 	@RequestMapping(value = "/admin/bookInventory/addBook", method = RequestMethod.POST)
-	public String addBook(@ModelAttribute("book") Book book, HttpServletRequest request) {
+	public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult result, HttpServletRequest request) {
+
+		if (result.hasErrors()) {
+			return "addBook";
+		}
 		bookDao.addBook(book);
 
 		MultipartFile bookImage = book.getBookImage();
@@ -130,8 +136,11 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/admin/bookInventory/editBook", method = RequestMethod.POST)
-	public String editBookPost(@ModelAttribute("book") Book book, Model model, HttpServletRequest request) {
-
+	public String editBookPost(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model,
+			HttpServletRequest request) {
+		if (result.hasErrors()) {
+			return "editBook";
+		}
 		MultipartFile bookImage = book.getBookImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + book.getBookId() + ".png");
